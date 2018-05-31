@@ -1,0 +1,16 @@
+platform :ios, '7.0'
+target 'Masonry_Leyal' do
+pod 'SDCycleScrollView'
+pod 'SMSSDK'
+pod 'VKVideoPlayer'
+pod 'MJRefresh'
+pod 'SVProgressHUD'
+pod 'YYModel'
+pod 'AFNetworking'
+pod 'Masonry'
+pod 'SDWebImage'
+pod 'AVOSCloud'
+pod 'AVOSCloudIM'
+pod 'TZImagePickerController'
+pod 'MJExtension'
+end

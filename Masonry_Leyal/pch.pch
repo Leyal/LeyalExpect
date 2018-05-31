@@ -1,0 +1,74 @@
+//
+//  pch.pch
+//  Masonry_Leyal
+//
+//  Created by 雷源 on 2017/10/30.
+//  Copyright © 2017年 Yuanjihua. All rights reserved.
+//
+
+#ifndef pch_pch
+#define pch_pch
+//-----------masonry-------屏幕适配
+#define MAS_SHORTHAND
+#define MAS_SHORTHAND_GLOBALS
+#define ScreenW [UIScreen mainScreen].bounds.size.width
+#define ScreenH [UIScreen mainScreen].bounds.size.height
+#define WScale ScreenW/375
+#define HScale ScreenH/667
+#define AppMainColor [UIColor whiteColor]
+#define titleColor [UIColor RGB:216 andG:43 andB:18 alpha:1]
+#import <Masonry.h>
+#import "UIColor+SetRGB.h"
+#import <AVOSCloud/AVOSCloud.h>
+#import <MJExtension/MJExtension.h>
+#import <UIImageView+WebCache.h>
+#import <SVProgressHUD.h>
+#import "UIImage+GIFImage.h"
+//懒加载
+#define LAZY(type,name) \
+- (type *)name {\
+if (_##name == nil) {\
+_##name = [[type alloc] init];\
+}\
+return _##name;\
+}
+
+//懒加载
+#define LAZY_VIEW(type, superView, name)\
+- (type *)name {\
+if (_##name == nil) {\
+type *view = [[type alloc] init];\
+_##name = view;\
+[superView addSubview:view];\
+}\
+return _##name;\
+}
+//懒加载
+#define LAZY_TABLEVIEW(controller, superView, name) \
+- (UITableView *)name {\
+if (_##name == nil) {\
+UITableView *tableView= [[UITableView alloc] init];\
+[superView addSubview:tableView];\
+_##name = tableView;\
+_##name.delegate = controller;\
+_##name.dataSource = controller;\
+}\
+return _##name;\
+}
+//自定义Log
+#ifdef DEBUG
+#define YKLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#define YKLog(...)
+#endif
+//RGB
+//#define RGB(r,g,b,alp)\
+//-(UIColor *)returnColor{\
+//UIColor * c = [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:alp];\
+//return c;\
+//}
+
+
+
+
+#endif /* pch_pch */
